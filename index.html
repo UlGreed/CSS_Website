@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biodata Nathanael</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+/* ================================
+   ROOT & RESET
+================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg:        #0d0b1a;
+  --bg2:       #13102a;
+  --card:      #1a1730;
+  --card-border: rgba(255,255,255,0.07);
+  --accent:    #00e5b8;
+  --accent2:   #7b5ef8;
+  --text:      #f0eeff;
+  --muted:     rgba(240,238,255,0.5);
+  --radius:    16px;
+  --nav-h:     62px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ================================
+   BACKGROUND DECORATION
+================================ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 10% 20%, rgba(123,94,248,0.18) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 90% 80%, rgba(0,229,184,0.12) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ================================
+   NAVBAR
+================================ */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(13,11,26,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--card-border);
+}
+
+.nav-inner {
+  max-width: 960px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.5px;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-logo span { color: var(--accent); }
+
+/* Desktop links */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 4px;
+}
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 40px;
+  transition: color 0.2s, background 0.2s;
+}
+.nav-links a:hover {
+  color: var(--accent);
+  background: rgba(0,229,184,0.08);
+}
+
+/* ================================
+   BURGER BUTTON
+================================ */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s;
+}
+.burger:hover {
+  border-color: rgba(0,229,184,0.4);
+  background: rgba(0,229,184,0.05);
+}
+.burger .bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), opacity 0.3s;
+}
+/* Open state */
+.burger.open .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burger.open .bar:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.burger.open .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ================================
+   MOBILE MENU DRAWER
+================================ */
+.mobile-drawer {
+  position: fixed;
+  top: var(--nav-h);
+  left: 0; right: 0;
+  background: rgba(13,11,26,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--card-border);
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(.4,0,.2,1);
+  z-index: 999;
+}
+.mobile-drawer.open { max-height: 360px; }
+
+.mobile-drawer nav {
+  padding: 12px 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+.mobile-drawer nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 14px 28px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  transition: color 0.2s, background 0.2s;
+}
+.mobile-drawer nav a:hover {
+  color: var(--accent);
+  background: rgba(0,229,184,0.06);
+}
+.mobile-drawer nav a .icon {
+  width: 20px;
+  height: 20px;
+  opacity: 0.5;
+  flex-shrink: 0;
+}
+.mobile-drawer nav a:hover .icon { opacity: 1; }
+
+/* ================================
+   HEADER HERO
+================================ */
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.avatar-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent2), var(--accent));
+  padding: 3px;
+  margin-bottom: 20px;
+  animation: spinRing 8s linear infinite;
+}
+@keyframes spinRing {
+  to { filter: hue-rotate(360deg); }
+}
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--bg2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Syne', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  background-clip: unset;
+  letter-spacing: -1px;
+  color: var(--text);
+}
+
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -1px;
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+.hero h1 em {
+  font-style: normal;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero .subtitle {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 400px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(0,229,184,0.1);
+  border: 1px solid rgba(0,229,184,0.3);
+  color: var(--accent);
+  font-size: 13px;
+  font-weight: 600;
+  padding: 6px 16px;
+  border-radius: 40px;
+  letter-spacing: 0.3px;
+}
+.badge::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  background: var(--accent);
+  border-radius: 50%;
+  animation: pulse 2s ease infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.6); }
+}
+
+/* ================================
+   MAIN LAYOUT
+================================ */
+main {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 0 24px 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ================================
+   CARDS
+================================ */
+.card {
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+.card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(123,94,248,0.25);
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,229,184,0.3), transparent);
+}
+
+/* ================================
+   TWO COLUMN GRID
+================================ */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* ================================
+   INFO TABLE
+================================ */
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
+.info-table tr:last-child { border-bottom: none; }
+.info-table td {
+  padding: 11px 0;
+  font-size: 14px;
+  vertical-align: top;
+}
+.info-table td:first-child {
+  color: var(--muted);
+  width: 130px;
+  font-size: 13px;
+}
+.info-table td:last-child { color: var(--text); font-weight: 500; }
+
+/* ================================
+   SKILL TAGS
+================================ */
+.skills-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.skill {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 7px 16px;
+  border-radius: 40px;
+  border: 1px solid;
+  transition: transform 0.2s;
+}
+.skill:hover { transform: scale(1.04); }
+.skill.s1 { background: rgba(123,94,248,0.1); border-color: rgba(123,94,248,0.3); color: #a78bfa; }
+.skill.s2 { background: rgba(0,229,184,0.1); border-color: rgba(0,229,184,0.3); color: var(--accent); }
+.skill.s3 { background: rgba(248,167,94,0.1); border-color: rgba(248,167,94,0.3); color: #f8a75e; }
+.skill.s4 { background: rgba(248,94,94,0.1);  border-color: rgba(248,94,94,0.3);  color: #f87171; }
+
+/* ================================
+   QUOTE
+================================ */
+.quote {
+  position: relative;
+  padding: 4px 0 4px 24px;
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--text);
+  line-height: 1.7;
+  border-left: 3px solid var(--accent2);
+}
+.quote cite {
+  display: block;
+  font-size: 12px;
+  font-style: normal;
+  color: var(--muted);
+  margin-top: 8px;
+}
+
+/* ================================
+   CONTACT
+================================ */
+.contact-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--card-border);
+  border-radius: 40px;
+  padding: 8px 18px;
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 22px;
+}
+.contact-chip svg { flex-shrink: 0; color: var(--accent); }
+
+/* FORM */
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.form-group label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.form-group input,
+.form-group textarea {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 10px;
+  padding: 11px 16px;
+  color: var(--text);
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  width: 100%;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: rgba(0,229,184,0.4);
+  background: rgba(0,229,184,0.04);
+}
+.form-group textarea { min-height: 100px; resize: vertical; }
+
+.btn-submit {
+  margin-top: 4px;
+  background: linear-gradient(90deg, var(--accent2), var(--accent));
+  color: #0d0b1a;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.3px;
+}
+.btn-submit:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-submit:active { transform: scale(0.97); }
+
+/* ================================
+   FOOTER
+================================ */
+footer {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 28px 16px;
+  color: var(--muted);
+  font-size: 13px;
+  border-top: 1px solid var(--card-border);
+}
+footer span { color: var(--accent); }
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 640px) {
+  .nav-links   { display: none; }
+  .burger      { display: flex; }
+  .grid-2      { grid-template-columns: 1fr; }
+  .form-row    { grid-template-columns: 1fr; }
+  .hero        { padding: 40px 20px 32px; }
+  main         { padding: 0 16px 48px; }
+}
+
+/* ================================
+   SCROLL FADE-IN ANIMATION
+================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<header class="navbar">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">N<span>.</span></a>
+
+    <ul class="nav-links">
+      <li><a href="#tentang">Tentang</a></li>
+      <li><a href="#tujuan">Tujuan</a></li>
+      <li><a href="#skill">Skill</a></li>
+      <li><a href="#kontak">Kontak</a></li>
+    </ul>
+
+    <!-- Burger Button -->
+    <button class="burger" id="burgerBtn" aria-label="Buka menu" aria-expanded="false">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- ===== MOBILE DRAWER ===== -->
+<div class="mobile-drawer" id="mobileDrawer" aria-hidden="true">
+  <nav>
+    <a href="#tentang" class="drawer-link">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      Tentang Saya
+    </a>
+    <a href="#tujuan" class="drawer-link">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><line x1="12" y1="3" x2="12" y2="1"/>
+      </svg>
+      Tujuan Karir
+    </a>
+    <a href="#skill" class="drawer-link">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+      </svg>
+      Skill
+    </a>
+    <a href="#kontak" class="drawer-link">
+      <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      Kontak
+    </a>
+  </nav>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="avatar-ring">
+    <div class="avatar-inner">NA</div>
+  </div>
+  <h1>Nathanael Benny<br><em>Andriansyah</em></h1>
+  <p class="subtitle">Calon game developer yang membangun dunia virtual satu baris kode sekaligus.</p>
+  <span class="badge">Game Developer</span>
+</section>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main>
+
+  <!-- Tentang & Tujuan -->
+  <div class="grid-2">
+    <div class="card fade-up" id="tentang">
+      <div class="section-label">Tentang Saya</div>
+      <p style="font-size:15px;line-height:1.75;color:rgba(240,238,255,0.8);">
+        Saya memiliki minat besar dalam dunia teknologi, khususnya pengembangan game.
+        Saya terus belajar dan berkembang untuk menjadi developer profesional yang handal.
+      </p>
+    </div>
+    <div class="card fade-up" id="tujuan">
+      <div class="section-label">Tujuan Karir</div>
+      <p style="font-size:15px;line-height:1.75;color:rgba(240,238,255,0.8);">
+        Ingin menjadi <strong style="color:#a78bfa;">Game Developer</strong> yang handal dan menciptakan
+        game inovatif yang menginspirasi serta menghibur banyak orang di seluruh dunia.
+      </p>
+    </div>
+  </div>
+
+  <!-- Informasi Pribadi -->
+  <div class="card fade-up">
+    <div class="section-label">Informasi Pribadi</div>
+    <table class="info-table">
+      <tr>
+        <td>Nama Lengkap</td>
+        <td>Nathanael Benny Andriansyah</td>
+      </tr>
+      <tr>
+        <td>Cita-cita</td>
+        <td>Game Developer</td>
+      </tr>
+      <tr>
+        <td>Email</td>
+        <td>nathanaelbenny05@gmail.com</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>Pelajar / Calon Developer</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Skill -->
+  <div class="card fade-up" id="skill">
+    <div class="section-label">Skill</div>
+    <div class="skills-wrap">
+      <span class="skill s1">Game Programming</span>
+      <span class="skill s2">Desain Game</span>
+      <span class="skill s3">3D Modeling</span>
+      <span class="skill s4">Artificial Intelligence</span>
+    </div>
+  </div>
+
+  <!-- Quote -->
+  <div class="card fade-up">
+    <div class="section-label">Quote</div>
+    <blockquote class="quote">
+      Kesuksesan datang dari usaha dan konsistensi.
+      <cite>— Nathanael Benny Andriansyah</cite>
+    </blockquote>
+  </div>
+
+  <!-- Kontak -->
+  <div class="card fade-up" id="kontak">
+    <div class="section-label">Kontak</div>
+    <div class="contact-chip">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+        <polyline points="22,6 12,13 2,6"/>
+      </svg>
+      nathanaelbenny05@gmail.com
+    </div>
+
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" id="nama" placeholder="Nama kamu" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="email@contoh.com" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pesan">Pesan</label>
+        <textarea id="pesan" placeholder="Tulis pesanmu di sini..." required></textarea>
+      </div>
+      <button type="submit" class="btn-submit" id="submitBtn">Kirim Pesan →</button>
+    </form>
+  </div>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  &copy; 2026 <span>Nathanael Benny Andriansyah</span>. All rights reserved.
+</footer>
+
+<!-- ===== JAVASCRIPT ===== -->
+<script>
+  /* ---------- BURGER MENU ---------- */
+  const burger  = document.getElementById('burgerBtn');
+  const drawer  = document.getElementById('mobileDrawer');
+
+  function toggleMenu(force) {
+    const open = force !== undefined ? force : !burger.classList.contains('open');
+    burger.classList.toggle('open', open);
+    drawer.classList.toggle('open', open);
+    burger.setAttribute('aria-expanded', open);
+    drawer.setAttribute('aria-hidden', !open);
+  }
+
+  burger.addEventListener('click', () => toggleMenu());
+
+  // Close drawer when a link is clicked
+  document.querySelectorAll('.drawer-link').forEach(link => {
+    link.addEventListener('click', () => toggleMenu(false));
+  });
+
+  // Close drawer when clicking outside
+  document.addEventListener('click', e => {
+    if (!burger.contains(e.target) && !drawer.contains(e.target)) {
+      toggleMenu(false);
+    }
+  });
+
+  /* ---------- SCROLL FADE-IN ---------- */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-up').forEach((el, i) => {
+    el.style.transitionDelay = (i * 0.07) + 's';
+    observer.observe(el);
+  });
+
+  /* ---------- FORM SUBMIT ---------- */
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    btn.textContent = 'Terkirim ✓';
+    btn.style.background = 'linear-gradient(90deg,#00e5b8,#00b894)';
+    btn.disabled = true;
+    setTimeout(() => {
+      btn.textContent = 'Kirim Pesan →';
+      btn.style.background = '';
+      btn.disabled = false;
+      e.target.reset();
+    }, 2500);
+  }
+</script>
+</body>
+</html>
